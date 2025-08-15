@@ -1,2 +1,2 @@
 import './index.css';
-export { Companion } from './companion';
+export { CompanionWrapper as Companion } from './companion';

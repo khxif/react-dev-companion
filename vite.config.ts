@@ -17,12 +17,11 @@ export default defineConfig({
       fileName: format => `dev-companion.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'zustand', 'tailwindcss'],
+      external: ['react', 'react-dom', 'tailwindcss'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          zustand: 'zustand',
           tailwindcss: 'tailwindcss',
         },
       },

@@ -1,35 +1,31 @@
 import * as React from 'react';
-import { useAppStore } from '../stores/app-store';
+import { useAppContext } from '../contexts/app-context';
 
 const BREAK_TIMEOUT = 180000;
 const INACTIVITY_TIMEOUT = 30000;
 
 export function useTabActiveTime() {
-  const activeTime = useAppStore(state => state.activeTime);
-  const setActiveTime = useAppStore(state => state.setActiveTime);
+  const { activeTime, updateActiveTime, resetActiveTime } = useAppContext();
 
   const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
   const breakRef = React.useRef<number | null>(null);
   const inactivityTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
-  const resetTimer = React.useCallback(() => {
-    setActiveTime(0);
-  }, [setActiveTime]);
 
   const resetInactivityTimer = React.useCallback(() => {
     if (inactivityTimeoutRef.current !== null) clearTimeout(inactivityTimeoutRef.current);
 
     inactivityTimeoutRef.current = setTimeout(() => {
-      setActiveTime(0);
+      resetActiveTime();
     }, INACTIVITY_TIMEOUT);
-  }, [setActiveTime]);
+  }, [resetActiveTime]);
 
   React.useEffect(() => {
     const startTimer = () => {
       if (intervalRef.current !== null) return;
 
       intervalRef.current = setInterval(() => {
-        setActiveTime(activeTime + 1000);
+        updateActiveTime(activeTime + 1000);
       }, 1000);
     };
 
@@ -52,8 +48,8 @@ export function useTabActiveTime() {
         const breakTime = Date.now() - breakRef.current;
         breakRef.current = null;
 
-        if (breakTime > BREAK_TIMEOUT) setActiveTime(0);
-        else setActiveTime(activeTime + breakTime);
+        if (breakTime > BREAK_TIMEOUT) resetActiveTime()
+        else updateActiveTime(activeTime + breakTime);
       }
       startTimer();
     };
@@ -71,9 +67,9 @@ export function useTabActiveTime() {
       document.removeEventListener('visibilitychange', onVisibilityChange);
       events.forEach(event => document.removeEventListener(event, onUserActivity));
     };
-  }, [setActiveTime, activeTime, resetInactivityTimer]);
+  }, [updateActiveTime, activeTime, resetInactivityTimer]);
 
-  return { activeTime ,resetTimer};
+  return { activeTime };
 }
 
 const events = ['mousemove', 'keydown', 'scroll', 'click', 'scroll'];

@@ -3,6 +3,7 @@
 import { useTabActiveTime } from './hooks/use-tab-active-time';
 import { formatMsToMinSec } from './utils/lib';
 import CatWalking from './assets/cat-walk.mp4';
+import { AppContextProvider, useAppContext } from './contexts/app-context';
 
 interface CompanionProps {
   direction?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
@@ -10,8 +11,9 @@ interface CompanionProps {
 }
 
 export function Companion({ direction = 'bottom-right', theme = 'dark' }: CompanionProps) {
-  // const { activeTime, resetTimer } = useTabActiveTime();
-  // const formattedTime = formatMsToMinSec(activeTime);
+  const { activeTime } = useTabActiveTime();
+  const { resetActiveTime } = useAppContext();
+  const formattedTime = formatMsToMinSec(activeTime);
 
   return (
     <div
@@ -23,7 +25,7 @@ export function Companion({ direction = 'bottom-right', theme = 'dark' }: Compan
       `}
     >
       <button
-        // onClick={resetTimer}
+        onClick={resetActiveTime}
         className={`p-2 rounded-full size-fit button peer cursor-pointer z-10
           ${theme === 'light' ? 'bg-white text-black' : 'text-white bg-black'}
           `}
@@ -38,8 +40,16 @@ export function Companion({ direction = 'bottom-right', theme = 'dark' }: Compan
        text-xs hidden peer-hover:block bottom-full -left-5 
        ${theme === 'light' ? 'bg-white text-black' : 'text-gray-200 bg-black'}`}
       >
-        {/* {formattedTime} */}323
+        {formattedTime}
       </span>
     </div>
+  );
+}
+
+export function CompanionWrapper({ ...props }: CompanionProps) {
+  return (
+    <AppContextProvider>
+      <Companion {...props} />
+    </AppContextProvider>
   );
 }
