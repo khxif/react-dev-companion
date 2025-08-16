@@ -1,7 +1,7 @@
 {
   "name": "react-dev-companion",
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "description": "A fun dev companion for React Devs",
   "author": "Khaif Mohamed",
@@ -12,6 +12,14 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khxif/react-dev-companion.git"
+  },
+  "bugs": {
+    "url": "https://github.com/khxif/react-dev-companion/issues"
+  },
+  "homepage": "https://github.com/khxif/react-dev-companion#readme",
   "scripts": {
     "lint": "eslint .",
     "dev": "vite build --watch",
