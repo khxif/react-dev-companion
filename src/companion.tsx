@@ -1,9 +1,10 @@
 'use client';
 
-import { useTabActiveTime } from './hooks/use-tab-active-time';
-import { formatMsToMinSec } from './utils/lib';
+import * as React from 'react';
 import CatWalking from './assets/cat-walk.mp4';
 import { AppContextProvider, useAppContext } from './contexts/app-context';
+import { useTabActiveTime } from './hooks/use-tab-active-time';
+import { formatMsToMinSec } from './utils/lib';
 
 interface CompanionProps {
   direction?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
@@ -42,8 +43,13 @@ function Companion({
 
       <span
         className={`w-28 px-2 py-1 rounded-md absolute text-center mb-0.5
-       text-xs hidden peer-hover:block bottom-full -left-5 
-       ${theme === 'light' ? 'bg-white text-black' : 'text-gray-200 bg-black'}`}
+       text-xs hidden peer-hover:block bottom-full  
+        ${theme === 'light' ? 'bg-white text-black' : 'text-gray-200 bg-black'}
+        ${direction === 'top-left' ? '-left-5' : ''} 
+        ${direction === 'top-right' ? '-right-6' : ''}
+        ${direction === 'bottom-left' ? '-left-5' : ''}
+        ${direction === 'bottom-right' ? '-right-6' : ''}
+       `}
       >
         {formattedTime}
       </span>
@@ -52,6 +58,13 @@ function Companion({
 }
 
 export function CompanionWrapper({ ...props }: CompanionProps) {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) return null;
+
   return (
     <AppContextProvider>
       <Companion {...props} />
