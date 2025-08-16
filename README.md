@@ -1,69 +1,109 @@
-# React + TypeScript + Vite
+# React Dev Companion
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight and customizable developer companion for React projects.\
+Helps you stay productive with features like activity tracking,
+reminders, and a fun companion widget.
 
-Currently, two official plugins are available:
+------------------------------------------------------------------------
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📦 Installation
 
-## Expanding the ESLint configuration
+Using npm:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+``` bash
+npm install react-dev-companion
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Using yarn:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+``` bash
+yarn add react-dev-companion
 ```
+
+------------------------------------------------------------------------
+
+## ⚡ Usage
+
+Import the component and styles into your project:
+
+``` tsx
+import { Companion } from 'react-dev-companion';
+import 'react-dev-companion/dist/react-dev-companion.css';
+
+export default function App() {
+  return (
+    <div>
+      <Companion direction="bottom-right" resetOnClick />
+      <h6>Hello World 🚀</h6>
+    </div>
+  );
+}
+```
+
+------------------------------------------------------------------------
+
+## 🎛 Props
+
+  ----------------------------------------------------------------------------
+  Prop                Type           Default              Description
+  ------------------- -------------- -------------------- --------------------
+  `direction`         string         `"bottom-right"`     Position of the
+                                                          companion
+                                                          (`"bottom-right"`,
+                                                          `"bottom-left"`,
+                                                          `"top-right"`,
+                                                          `"top-left"`)
+
+  `resetOnClick`      boolean        `false`              Whether clicking
+                                                          resets the
+                                                          companion's state
+
+  `className`         string         `""`                 Add custom CSS
+                                                          classes for styling
+  ----------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+## 🎨 Styling
+
+The package comes with a default CSS file.\
+If you're **not using Tailwind**, you can still use it by importing:
+
+``` tsx
+import 'react-dev-companion/dist/react-dev-companion.css';
+```
+
+You can also override styles with your own CSS or Tailwind classes.
+
+------------------------------------------------------------------------
+
+## 🛠 Development
+
+Clone and run locally:
+
+``` bash
+git clone https://github.com/khxif/react-dev-companion.git
+cd react-dev-companion
+npm install
+npm run dev
+```
+
+Build for production:
+
+``` bash
+npm run build
+```
+
+------------------------------------------------------------------------
+
+## 📄 License
+
+This project is licensed under the **MIT License** -- free to use and
+modify.
+
+------------------------------------------------------------------------
+
+## 💡 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first
+to discuss your ideas.
