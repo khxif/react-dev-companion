@@ -1,8 +1,11 @@
 {
   "name": "react-dev-companion",
   "private": false,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "description": "A fun dev companion for React Devs",
+  "author": "Khaif Mohamed",
+  "license": "MIT",
   "main": "dist/react-dev-companion.cjs.js",
   "module": "dist/react-dev-companion.es.js",
   "types": "dist/index.d.ts",
