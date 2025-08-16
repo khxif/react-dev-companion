@@ -65,6 +65,8 @@ export function CompanionWrapper({ ...props }: CompanionProps) {
   }, []);
   if (!mounted) return null;
 
+  if (process.env.NODE_ENV !== 'development') return null;
+
   return (
     <AppContextProvider>
       <Companion {...props} />
