@@ -30,7 +30,7 @@ function Companion({
       `}
     >
       <button
-        onClick={resetOnClick ? resetActiveTime : null}
+        {...(resetOnClick && { onClick: resetActiveTime })}
         className={`p-2 rounded-full size-fit button peer cursor-pointer z-10
           ${theme === 'light' ? 'bg-white text-black' : 'text-white bg-black'}
           `}
