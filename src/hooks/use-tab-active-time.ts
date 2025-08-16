@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useAppContext } from '../contexts/app-context';
 
-const BREAK_TIMEOUT = 180000;
-const INACTIVITY_TIMEOUT = 30000;
+const BREAK_TIMEOUT = 300000;
+const INACTIVITY_TIMEOUT = 300000;
 
 export function useTabActiveTime() {
   const { activeTime, updateActiveTime, resetActiveTime } = useAppContext();
@@ -10,7 +10,6 @@ export function useTabActiveTime() {
   const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
   const breakRef = React.useRef<number | null>(null);
   const inactivityTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
-
 
   const resetInactivityTimer = React.useCallback(() => {
     if (inactivityTimeoutRef.current !== null) clearTimeout(inactivityTimeoutRef.current);
@@ -48,7 +47,7 @@ export function useTabActiveTime() {
         const breakTime = Date.now() - breakRef.current;
         breakRef.current = null;
 
-        if (breakTime > BREAK_TIMEOUT) resetActiveTime()
+        if (breakTime > BREAK_TIMEOUT) resetActiveTime();
         else updateActiveTime(activeTime + breakTime);
       }
       startTimer();
@@ -67,7 +66,7 @@ export function useTabActiveTime() {
       document.removeEventListener('visibilitychange', onVisibilityChange);
       events.forEach(event => document.removeEventListener(event, onUserActivity));
     };
-  }, [updateActiveTime, activeTime, resetInactivityTimer]);
+  }, [updateActiveTime, activeTime, resetInactivityTimer, resetActiveTime]);
 
   return { activeTime };
 }

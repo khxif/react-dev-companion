@@ -8,9 +8,14 @@ import { AppContextProvider, useAppContext } from './contexts/app-context';
 interface CompanionProps {
   direction?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   theme?: 'light' | 'dark';
+  resetOnClick?: boolean;
 }
 
-export function Companion({ direction = 'bottom-right', theme = 'dark' }: CompanionProps) {
+function Companion({
+  direction = 'bottom-right',
+  theme = 'dark',
+  resetOnClick = false,
+}: CompanionProps) {
   const { activeTime } = useTabActiveTime();
   const { resetActiveTime } = useAppContext();
   const formattedTime = formatMsToMinSec(activeTime);
@@ -25,7 +30,7 @@ export function Companion({ direction = 'bottom-right', theme = 'dark' }: Compan
       `}
     >
       <button
-        onClick={resetActiveTime}
+        onClick={resetOnClick ? resetActiveTime : null}
         className={`p-2 rounded-full size-fit button peer cursor-pointer z-10
           ${theme === 'light' ? 'bg-white text-black' : 'text-white bg-black'}
           `}

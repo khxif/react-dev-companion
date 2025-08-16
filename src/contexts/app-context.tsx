@@ -3,6 +3,7 @@ import * as React from 'react';
 interface AppContextType {
   activeTime: number;
   updateActiveTime: (time: number) => void;
+  resetActiveTime: () => void;
 }
 
 const AppContext = React.createContext<AppContextType | undefined>(undefined);

@@ -14,7 +14,7 @@ export default defineConfig({
       entry: 'src/index.tsx',
       name: 'DevCompanion',
       formats: ['es', 'cjs'],
-      fileName: format => `dev-companion.${format}.js`,
+      fileName: format => `react-dev-companion.${format}.js`,
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'tailwindcss'],
