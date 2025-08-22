@@ -17,7 +17,7 @@ export default defineConfig({
       fileName: format => `react-dev-companion.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
       output: {
         globals: {
           react: 'React',
