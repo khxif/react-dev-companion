@@ -1,8 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import CatWakeup from './assets/cat-wakeup.mp4';
-import CatWalking from './assets/cat-walk.mp4';
 import { AppContextProvider, useAppContext } from './contexts/app-context';
 import { useTabActiveTime } from './hooks/use-tab-active-time';
 import { formatMsToMinSec } from './utils/lib';
@@ -37,10 +35,17 @@ function Companion({ direction = 'bottom-right', resetOnClick = false }: Compani
           autoPlay
           muted
           playsInline
-          key={isCatWakingUp ? 'wakeup' : 'walk'} // force remount
+          key={isCatWakingUp ? 'wakeup' : 'walk'}
           loop={!isCatWakingUp}
         >
-          <source src={isCatWakingUp ? CatWakeup : CatWalking} type="video/mp4" />
+          <source
+            src={
+              isCatWakingUp
+                ? 'https://raw.githubusercontent.com/khxif/react-dev-companion/main/src/assets/cat-wakeup.mp4'
+                : 'https://raw.githubusercontent.com/khxif/react-dev-companion/main/src/assets/cat-walk.mp4'
+            }
+            type="video/mp4"
+          />
         </video>
       </button>
 
