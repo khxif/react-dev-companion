@@ -45,7 +45,6 @@ export default function App() {
 |--------------|---------|------------------|-----------------------------------------------------------------------------|
 | `position`   | string  | `"bottom-right"` | Position of the companion. Options: `"bottom-right"`, `"bottom-left"`, `"top-right"`, `"top-left"`. |
 | `resetOnClick` | boolean | `false`         | Whether clicking resets the companion's state.                              |
-| `className`  | string  | `""`             | Add custom CSS classes for styling.                                         |
 
 ---
 
