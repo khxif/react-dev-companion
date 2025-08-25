@@ -11,7 +11,7 @@ reminders, and a fun companion widget.
 Using npm:
 
 ``` bash
-npm install react-dev-companion
+npm install react-dev-companion --save-dev
 ```
 
 Using yarn:
@@ -28,13 +28,11 @@ Import the component and styles into your project:
 
 ``` tsx
 import { Companion } from 'react-dev-companion';
-import 'react-dev-companion/dist/react-dev-companion.css';
 
 export default function App() {
   return (
     <div>
       <Companion direction="bottom-right" resetOnClick />
-      <h6>Hello World 🚀</h6>
     </div>
   );
 }
@@ -47,7 +45,7 @@ export default function App() {
   ----------------------------------------------------------------------------
   Prop                Type           Default              Description
   ------------------- -------------- -------------------- --------------------
-  `direction`         string         `"bottom-right"`     Position of the
+  `position`         string         `"bottom-right"`     Position of the
                                                           companion
                                                           (`"bottom-right"`,
                                                           `"bottom-left"`,
@@ -61,40 +59,6 @@ export default function App() {
   `className`         string         `""`                 Add custom CSS
                                                           classes for styling
   ----------------------------------------------------------------------------
-
-------------------------------------------------------------------------
-
-## 🎨 Styling
-
-The package comes with a default CSS file.\
-If you're **not using Tailwind**, you can still use it by importing:
-
-``` tsx
-import 'react-dev-companion/dist/react-dev-companion.css';
-```
-
-You can also override styles with your own CSS or Tailwind classes.
-
-------------------------------------------------------------------------
-
-## 🛠 Development
-
-Clone and run locally:
-
-``` bash
-git clone https://github.com/khxif/react-dev-companion.git
-cd react-dev-companion
-npm install
-npm run dev
-```
-
-Build for production:
-
-``` bash
-npm run build
-```
-
-------------------------------------------------------------------------
 
 ## 📄 License
 

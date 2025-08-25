@@ -6,11 +6,11 @@ import { useTabActiveTime } from './hooks/use-tab-active-time';
 import { formatMsToMinSec } from './utils/lib';
 
 interface CompanionProps {
-  direction?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   resetOnClick?: boolean;
 }
 
-function Companion({ direction = 'bottom-right', resetOnClick = false }: CompanionProps) {
+function Companion({ position = 'bottom-right', resetOnClick = false }: CompanionProps) {
   const { activeTime } = useTabActiveTime();
   const { resetActiveTime } = useAppContext();
   const formattedTime = formatMsToMinSec(activeTime);
@@ -20,18 +20,18 @@ function Companion({ direction = 'bottom-right', resetOnClick = false }: Compani
   return (
     <div
       className={`fixed flex flex-col 
-      ${direction === 'top-left' ? 'top-8 left-6' : ''} 
-      ${direction === 'top-right' ? 'top-8 right-6' : ''}
-      ${direction === 'bottom-left' ? 'bottom-8 left-6' : ''}
-      ${direction === 'bottom-right' ? 'bottom-8 right-6' : ''}
+      ${position === 'top-left' ? 'top-8 left-6' : ''} 
+      ${position === 'top-right' ? 'top-8 right-6' : ''}
+      ${position === 'bottom-left' ? 'bottom-8 left-6' : ''}
+      ${position === 'bottom-right' ? 'bottom-8 right-6' : ''}
       `}
     >
       <button
         {...(resetOnClick && { onClick: resetActiveTime })}
-        className="p-2 rounded-full size-fit button peer cursor-pointer z-10 text-white bg-black "
+        className="p-2.5 rounded-full size-fit button peer cursor-pointer z-10 text-white bg-black "
       >
         <video
-          className="size-10"
+          className="size-12"
           autoPlay
           muted
           playsInline
@@ -52,10 +52,10 @@ function Companion({ direction = 'bottom-right', resetOnClick = false }: Compani
       <span
         className={`w-28 px-2 py-1 rounded-md absolute text-center mb-0.5
        text-xs hidden peer-hover:block bottom-full text-gray-200 bg-black
-        ${direction === 'top-left' ? '-left-5' : ''}
-        ${direction === 'top-right' ? '-right-6' : ''}
-        ${direction === 'bottom-left' ? '-left-5' : ''}
-        ${direction === 'bottom-right' ? '-right-6' : ''}
+        ${position === 'top-left' ? '-left-5' : ''}
+        ${position === 'top-right' ? '-right-6' : ''}
+        ${position === 'bottom-left' ? '-left-5' : ''}
+        ${position === 'bottom-right' ? '-right-6' : ''}
        `}
       >
         {formattedTime}
