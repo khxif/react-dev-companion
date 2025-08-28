@@ -16,7 +16,7 @@ function Companion({ position = 'bottom-right', resetOnClick = false }: Companio
   const formattedTime = formatMsToMinSec(activeTime);
 
   const isCatWakingUp = activeTime < 5000;
-  const isCatTired = activeTime > 300000;
+  const isCatTired = activeTime > 1500000;
 
   return (
     <div
