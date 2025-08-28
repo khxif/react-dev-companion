@@ -16,6 +16,7 @@ function Companion({ position = 'bottom-right', resetOnClick = false }: Companio
   const formattedTime = formatMsToMinSec(activeTime);
 
   const isCatWakingUp = activeTime < 5000;
+  const isCatTired = activeTime > 300000;
 
   return (
     <div
@@ -35,13 +36,15 @@ function Companion({ position = 'bottom-right', resetOnClick = false }: Companio
           autoPlay
           muted
           playsInline
-          key={isCatWakingUp ? 'wakeup' : 'walk'}
+          key={isCatWakingUp ?  'wakeup' : isCatTired ? 'tired' : 'walk'}
           loop={!isCatWakingUp}
         >
           <source
             src={
               isCatWakingUp
                 ? 'https://raw.githubusercontent.com/khxif/react-dev-companion/main/src/assets/cat-wakeup.mp4'
+                : isCatTired
+                ? 'https://raw.githubusercontent.com/khxif/react-dev-companion/main/src/assets/cat-tired.mp4'
                 : 'https://raw.githubusercontent.com/khxif/react-dev-companion/main/src/assets/cat-walk.mp4'
             }
             type="video/mp4"
