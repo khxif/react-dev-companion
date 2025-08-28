@@ -1,7 +1,6 @@
 # React Dev Companion
 
-A lightweight and customizable **developer companion for React projects**.  
-Stay productive with features like **activity tracking, reminders, and a fun companion widget**.
+**React Dev Companion** is a fun and interactive companion for React developers. It integrates with your **Pomodoro timer** and visually shows your coding activity through an **animated pet that wakes up, walks, and gets tired as your session progresses.on widget**.
 
 ---
 

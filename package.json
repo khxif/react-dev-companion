@@ -1,9 +1,9 @@
 {
   "name": "react-dev-companion",
   "private": false,
-  "version": "0.0.9",
+  "version": "1.0.0",
   "type": "module",
-  "description": "A fun dev companion for React Devs",
+  "description": "An interactive React companion widget that follows the Pomodoro timer — a fun floating pet that wakes up, walks, and gets tired as you code.",
   "author": "Khaif Mohamed",
   "license": "MIT",
   "main": "dist/react-dev-companion.cjs.js",
@@ -64,12 +64,20 @@
     "access": "public"
   },
   "keywords": [
-    "react-dev-companion",
     "react",
+    "react-component",
     "companion",
     "devtools",
+    "pomodoro",
+    "productivity",
+    "widget",
     "floating-widget",
-    "helper",
-    "pomodoro"
+    "fun",
+    "pet",
+    "virtual-pet",
+    "break-reminder",
+    "timer",
+    "focus",
+    "interactive"
   ]
 }

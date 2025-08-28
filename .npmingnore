@@ -3,4 +3,3 @@ node_modules/
 vite.config.ts
 tsconfig.json
 _.log
-_.md # if you don’t want docs
