@@ -43,7 +43,7 @@ export default function App() {
 | Prop         | Type    | Default          | Description                                                                 |
 |--------------|---------|------------------|-----------------------------------------------------------------------------|
 | `position`   | string  | `"bottom-right"` | Position of the companion. Options: `"bottom-right"`, `"bottom-left"`, `"top-right"`, `"top-left"`. |
-| `resetOnClick` | boolean | `false`         | Whether clicking resets the companion's state.                              |
+| `resetOnClick` | boolean | `false`         |  Resets the companions timer.                              |
 
 ---
 
