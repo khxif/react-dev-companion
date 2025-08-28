@@ -1,7 +1,7 @@
 {
   "name": "react-dev-companion",
   "private": false,
-  "version": "1.0.2",
+  "version": "1.0.4",
   "type": "module",
   "description": "An interactive React companion widget that follows the Pomodoro timer — a fun floating pet that wakes up, walks, and gets tired as you code.",
   "author": "Khaif Mohamed",

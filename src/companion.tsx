@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import { createPortal } from 'react-dom';
 import { AppContextProvider, useAppContext } from './contexts/app-context';
 import { useTabActiveTime } from './hooks/use-tab-active-time';
 import { formatMsToMinSec } from './utils/lib';
@@ -20,7 +21,7 @@ function Companion({ position = 'bottom-right', resetOnClick = false }: Companio
 
   return (
     <div
-      className={`fixed flex flex-col 
+      className={`fixed flex flex-col z-[999] pointer-events-none
       ${position === 'top-left' ? 'top-8 left-6' : ''} 
       ${position === 'top-right' ? 'top-8 right-6' : ''}
       ${position === 'bottom-left' ? 'bottom-8 left-6' : ''}
@@ -29,14 +30,14 @@ function Companion({ position = 'bottom-right', resetOnClick = false }: Companio
     >
       <button
         {...(resetOnClick && { onClick: resetActiveTime })}
-        className="p-2.5 rounded-full size-fit button peer cursor-pointer z-10 text-white bg-black "
+        className="pointer-events-auto p-2.5 rounded-full size-fit button peer cursor-pointer z-10 text-white bg-black "
       >
         <video
           className="size-12"
           autoPlay
           muted
           playsInline
-          key={isCatWakingUp ?  'wakeup' : isCatTired ? 'tired' : 'walk'}
+          key={isCatWakingUp ? 'wakeup' : isCatTired ? 'tired' : 'walk'}
           loop={!isCatWakingUp}
         >
           <source
@@ -77,9 +78,10 @@ export function CompanionWrapper({ ...props }: CompanionProps) {
 
   if (process.env.NODE_ENV !== 'development') return null;
 
-  return (
+  return createPortal(
     <AppContextProvider>
       <Companion {...props} />
-    </AppContextProvider>
+    </AppContextProvider>,
+    document.body,
   );
 }
